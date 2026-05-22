@@ -1,499 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>
-Luciana Vicente | Corretora de Planos de Saúde
-</title>
-
+<title>Luciana Vicente | Corretora de Planos de Saúde</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
 <style>
-
-:root{
-    --cor-principal:#0275d8;
-    --bg-claro:#f8f9fa;
-    --texto:#333;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-    color:var(--texto);
-    overflow-x:hidden;
-    background:#fff;
-}
-
-/* HEADER */
-header{
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 8%;
-    background:#fff;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-
-.logo-texto{
-    text-decoration:none;
-    font-size:1.7rem;
-    font-weight:800;
-    color:#111;
-}
-
-.logo-texto span{
-    color:var(--cor-principal);
-}
-
-nav{
-    display:flex;
-    gap:20px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#333;
-    font-weight:600;
-}
-
-/* MOBILE */
-.menu-toggle{
-    display:none;
-    font-size:1.8rem;
-    cursor:pointer;
-}
-
-#check{
-    display:none;
-}
-
+:root{ --cor-principal:#0275d8; --bg-claro:#f8f9fa; --texto:#333; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; color:var(--texto); overflow-x:hidden; background:#fff; }
+header{ width:100%; display:flex; justify-content:space-between; align-items:center; padding:15px 8%; background:#fff; position:sticky; top:0; z-index:999; box-shadow:0 2px 10px rgba(0,0,0,.05); }
+.logo-texto{ text-decoration:none; font-size:1.7rem; font-weight:800; color:#111; }
+.logo-texto span{ color:var(--cor-principal); }
+nav{ display:flex; gap:20px; }
+nav a{ text-decoration:none; color:#333; font-weight:600; }
+.menu-toggle{ display:none; font-size:1.8rem; cursor:pointer; }
+#check{ display:none; }
 @media(max-width:768px){
-    .menu-toggle{
-        display:block;
-    }
-
-    nav{
-        position:absolute;
-        top:80px;
-        left:-100%;
-        width:100%;
-        background:#fff;
-        flex-direction:column;
-        align-items:center;
-        padding:20px 0;
-        transition:.3s;
-    }
-
-    #check:checked ~ nav{
-        left:0;
-    }
+    .menu-toggle{ display:block; }
+    nav{ position:absolute; top:80px; left:-100%; width:100%; background:#fff; flex-direction:column; align-items:center; padding:20px 0; transition:.3s; }
+    #check:checked ~ nav{ left:0; }
 }
-
-/* HERO */
-.hero{
-    background: linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)), url('./hero.png');
-    background-size:cover;
-    background-position:center;
-    min-height:65vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-    color:#fff;
-    padding:20px;
-}
-
-.hero h1{
-    font-size:3rem;
-    margin-bottom:20px;
-}
-
-.cta-group{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.btn-action{
-    padding:15px 30px;
-    border-radius:50px;
-    text-decoration:none;
-    color:#fff;
-    font-weight:700;
-    transition:.3s;
-}
-
-.btn-action:hover{
-    transform:translateY(-3px);
-}
-
-.btn-whatsapp{
-    background:#25d366;
-}
-
-.btn-simulador{
-    background:var(--cor-principal);
-}
-
-/* DIFERENCIAIS */
-#diferenciais {
-    padding: 100px 8%;
-    background: #ffffff;
-}
-
-.diferenciais-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Mosaico de Imagens */
-.mosaic-wrapper {
-    position: relative;
-    width: 480px;
-    height: 440px;
-    flex-shrink: 0;
-}
-
-.img-main {
-    position: absolute;
-    width: 65%;
-    height: 360px;
-    object-fit: cover;
-    border-radius: 20px;
-    left: 0;
-    top: 20px;
-    border: 4px solid #fff;
-    box-shadow: 0 15px 35px rgba(0,0,0,.12);
-    z-index: 2;
-}
-
-.img-sub-1 {
-    position: absolute;
-    width: 45%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 20px;
-    right: 0;
-    top: 0;
-    border: 4px solid #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
-    z-index: 1;
-}
-
-.img-sub-2 {
-    position: absolute;
-    width: 48%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 20px;
-    right: 20px;
-    bottom: 0;
-    border: 4px solid #fff;
-    box-shadow: 0 12px 30px rgba(0,0,0,.1);
-    z-index: 3;
-}
-
-/* Coluna de Texto Expandida */
-.col-texto {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.col-texto h2 {
-    font-size: 2.5rem;
-    color: #111;
-    margin-bottom: 35px;
-    font-weight: 800;
-}
-
-/* Cards de Benefícios */
-.lista-diferenciais {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.item {
-    background: #f8f9fa;
-    padding: 22px 28px;
-    border-radius: 16px;
-    border-left: 4px solid transparent;
-    transition: all .3s ease;
-}
-
-.item:hover {
-    background: #fff;
-    border-left-color: var(--cor-principal);
-    transform: translateX(5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-.item-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 6px;
-}
-
-.item h3 {
-    font-size: 1.25rem;
-    color: #222;
-    font-weight: 700;
-    margin: 0;
-}
-
-.item p {
-    color: #666;
-    font-size: 0.98rem;
-    line-height: 1.5;
-    margin: 0;
-    padding-left: 36px;
-}
-
-/* RESPONSIVIDADE DO MOSAICO E DIFERENCIAIS */
+.hero{ background: linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)), url('./hero.png'); background-size:cover; background-position:center; min-height:65vh; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color:#fff; padding:20px; }
+.hero h1{ font-size:3rem; margin-bottom:20px; }
+.cta-group{ display:flex; flex-direction:column; gap:15px; }
+.btn-action{ padding:15px 30px; border-radius:50px; text-decoration:none; color:#fff; font-weight:700; transition:.3s; }
+.btn-action:hover{ transform:translateY(-3px); }
+.btn-whatsapp{ background:#25d366; }
+.btn-simulador{ background:var(--cor-principal); }
+#diferenciais { padding: 100px 8%; background: #ffffff; }
+.diferenciais-container { display: flex; align-items: center; justify-content: space-between; gap: 80px; max-width: 1200px; margin: 0 auto; }
+.mosaic-wrapper { position: relative; width: 480px; height: 440px; flex-shrink: 0; }
+.img-main { position: absolute; width: 65%; height: 360px; object-fit: cover; border-radius: 20px; left: 0; top: 20px; border: 4px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,.12); z-index: 2; }
+.img-sub-1 { position: absolute; width: 45%; height: 220px; object-fit: cover; border-radius: 20px; right: 0; top: 0; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,.08); z-index: 1; }
+.img-sub-2 { position: absolute; width: 48%; height: 200px; object-fit: cover; border-radius: 20px; right: 20px; bottom: 0; border: 4px solid #fff; box-shadow: 0 12px 30px rgba(0,0,0,.1); z-index: 3; }
+.col-texto { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+.col-texto h2 { font-size: 2.5rem; color: #111; margin-bottom: 35px; font-weight: 800; }
+.lista-diferenciais { display: flex; flex-direction: column; gap: 24px; }
+.item { background: #f8f9fa; padding: 22px 28px; border-radius: 16px; border-left: 4px solid transparent; transition: all .3s ease; }
+.item:hover { background: #fff; border-left-color: var(--cor-principal); transform: translateX(5px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+.item-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.item h3 { font-size: 1.25rem; color: #222; font-weight: 700; margin: 0; }
+.item p { color: #666; font-size: 0.98rem; line-height: 1.5; margin: 0; padding-left: 36px; }
 @media(max-width: 992px) {
-    #diferenciais {
-        padding: 60px 5%;
-    }
-
-    .diferenciais-container {
-        flex-direction: column;
-        gap: 50px;
-        text-align: center;
-    }
-
-    .mosaic-wrapper {
-        width: 100%;
-        max-width: 450px;
-        height: 380px;
-        margin: 0 auto;
-    }
-
-    .img-main { height: 300px; }
-    .img-sub-1 { height: 180px; }
-    .img-sub-2 { height: 160px; }
-
-    .col-texto h2 {
-        font-size: 2rem;
-        margin-bottom: 25px;
-    }
-
-    .item {
-        text-align: left;
-    }
+    #diferenciais { padding: 60px 5%; }
+    .diferenciais-container { flex-direction: column; gap: 50px; text-align: center; }
+    .mosaic-wrapper { width: 100%; max-width: 450px; height: 380px; margin: 0 auto; }
+    .img-main { height: 300px; } .img-sub-1 { height: 180px; } .img-sub-2 { height: 160px; }
+    .col-texto h2 { font-size: 2rem; margin-bottom: 25px; }
+    .item { text-align: left; }
 }
-
-/* SERVICOS */
-#servicos{
-    background:var(--bg-claro);
-    padding:80px 10%;
-}
-
-#servicos h2{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:2rem;
-}
-
-.grid-servicos{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.card-servico{
-    background:#fff;
-    padding:40px;
-    border-radius:18px;
-    border-top:5px solid var(--cor-principal);
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-/* PARCEIROS */
-.parceiros-section{
-    padding:80px 5%;
-    background:#fff;
-}
-
-.parceiros-section h2{
-    text-align:center;
-    margin-bottom:50px;
-    font-size:2.2rem;
-}
-
-.slide-item{
-    padding:10px;
-}
-
-.card-parceiro{
-    background:#fff;
-    border-radius:18px;
-    border:1px solid #ececec;
-    height:160px;
-    display:flex !important;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    transition:.3s;
-    box-shadow:0 5px 20px rgba(0,0,0,.04);
-    cursor:pointer;
-}
-
-.card-parceiro:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-.card-parceiro img{
-    width:80px;
-    height:80px;
-    object-fit:contain;
-    margin-bottom:10px;
-}
-
-.card-parceiro span{
-    font-size:.8rem;
-    font-weight:700;
-    text-transform:uppercase;
-    text-align:center;
-}
-
-.slick-slide{
-    margin:0 10px;
-}
-
-.slick-list{
-    margin:0 -10px;
-}
-
-.slick-prev:before,
-.slick-next:before{
-    color:var(--cor-principal);
-    font-size:30px;
-}
-
-/* MODAL */
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-    padding:20px;
-}
-
-.modal-content{
-    background:#fff;
-    width:100%;
-    max-width:500px;
-    border-radius:25px;
-    padding:40px;
-    position:relative;
-    animation:fade .3s ease;
-}
-
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.close-modal{
-    position:absolute;
-    top:15px;
-    right:20px;
-    font-size:2rem;
-    cursor:pointer;
-}
-
-.modal-logo{
-    width:120px;
-    height:120px;
-    object-fit:contain;
-    display:block;
-    margin:0 auto 20px;
-}
-
-.modal-title{
-    text-align:center;
-    font-size:2rem;
-    margin-bottom:20px;
-}
-
-.modal-info{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.info-box{
-    background:#f8f9fa;
-    padding:15px;
-    border-radius:12px;
-}
-
-/* MAPA */
-#contato{
-    padding:80px 10%;
-}
-
-#contato h2{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.mapa-container{
-    height:420px;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-/* FOOTER */
-footer{
-    background:#111;
-    color:#fff;
-    text-align:center;
-    padding:40px;
-}
-
+#servicos{ background:var(--bg-claro); padding:80px 10%; }
+#servicos h2{ text-align:center; margin-bottom:40px; font-size:2rem; }
+.grid-servicos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
+.card-servico{ background:#fff; padding:40px; border-radius:18px; border-top:5px solid var(--cor-principal); box-shadow:0 5px 20px rgba(0,0,0,.05); }
+.parceiros-section{ padding:80px 5%; background:#fff; }
+.parceiros-section h2{ text-align:center; margin-bottom:50px; font-size:2.2rem; }
+.slide-item{ padding:10px; }
+.card-parceiro{ background:#fff; border-radius:18px; border:1px solid #ececec; height:160px; display:flex !important; flex-direction:column; justify-content:center; align-items:center; transition:.3s; box-shadow:0 5px 20px rgba(0,0,0,.04); cursor:pointer; }
+.card-parceiro:hover{ transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,.08); }
+.card-parceiro img{ width:80px; height:80px; object-fit:contain; margin-bottom:10px; }
+.card-parceiro span{ font-size:.8rem; font-weight:700; text-transform:uppercase; text-align:center; }
+.slick-slide{ margin:0 10px; }
+.slick-list{ margin:0 -10px; }
+.slick-prev:before, .slick-next:before{ color:var(--cor-principal); font-size:30px; }
+.modal{ position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; justify-content:center; align-items:center; z-index:99999; padding:20px; }
+.modal-content{ background:#fff; width:100%; max-width:500px; border-radius:25px; padding:40px; position:relative; animation:fade .3s ease; }
+@keyframes fade{ from{ opacity:0; transform:translateY(20px); } to{ opacity:1; transform:translateY(0); } }
+.close-modal{ position:absolute; top:15px; right:20px; font-size:2rem; cursor:pointer; }
+.modal-logo{ width:120px; height:120px; object-fit:contain; display:block; margin:0 auto 20px; }
+.modal-title{ text-align:center; font-size:2rem; margin-bottom:20px; }
+.modal-info{ display:flex; flex-direction:column; gap:12px; }
+.info-box{ background:#f8f9fa; padding:15px; border-radius:12px; }
+#contato{ padding:80px 10%; }
+#contato h2{ text-align:center; margin-bottom:40px; }
+.mapa-container{ height:420px; border-radius:18px; overflow:hidden; box-shadow:0 5px 20px rgba(0,0,0,.08); }
+footer{ background:#111; color:#fff; text-align:center; padding:40px; }
 </style>
-
 </head>
-
 <body>
 
 <header>
-    <a href="#" class="logo-texto">
-        Luciana<span>Vicente</span>
-    </a>
+    <a href="#" class="logo-texto">Luciana<span>Vicente</span></a>
     <label class="menu-toggle" for="check">☰</label>
     <input type="checkbox" id="check">
     <nav>
@@ -507,51 +96,35 @@ footer{
 <section class="hero">
     <h1>Corretora de Planos de Saúde</h1>
     <div class="cta-group">
-        <a href="https://wa.me/5521967744616" class="btn-action btn-whatsapp">
-            Falar no WhatsApp
-        </a>
-        <a href="simulador/simulador-v2.html" class="btn-action btn-simulador">
-            Simular Plano
-        </a>
-    </div>
+        <a href="https://wa.me/5521967744616" class="btn-action btn-whatsapp">Falar no WhatsApp</a>
+        <a href="simulador/simulador-v2.html" class="btn-action btn-simulador">Simular Plano</a>
+    </header>
 </section>
 
 <section id="diferenciais">
     <div class="diferenciais-container">
-
         <div class="mosaic-wrapper">
             <img src="./luciana_1.png" class="img-main" alt="Especialista em Planos de Saúde">
             <img src="./luciana_2.png" class="img-sub-1" alt="Atendimento ágil">
             <img src="./luciana_3.png" class="img-sub-2" alt="Consultoria de seguros">
         </div>
-
         <div class="col-texto">
             <h2>Por que nos escolher?</h2>
-            
             <div class="lista-diferenciais">
                 <div class="item">
-                    <div class="item-header">
-                        <h3>🛡️ Especialista</h3>
-                    </div>
+                    <div class="item-header"><h3>🛡️ Especialista</h3></div>
                     <p>Análise técnica detalhada para identificar lacunas de cobertura e evitar custos desnecessários no seu orçamento.</p>
                 </div>
-
                 <div class="item">
-                    <div class="item-header">
-                        <h3>⚡ Gestão Proativa</h3>
-                    </div>
+                    <div class="item-header"><h3>⚡ Gestão Proativa</h3></div>
                     <p>Monitoramos ativamente prazos de carências, janelas de reajustes anuais e migrações vantajosas para você.</p>
                 </div>
-
                 <div class="item">
-                    <div class="item-header">
-                        <h3>📲 Atendimento Humano</h3>
-                    </div>
+                    <div class="item-header"><h3>📲 Atendimento Humano</h3></div>
                     <p>Esqueça os menus intermináveis de robôs. Você terá suporte direto via canais ágeis sempre que precisar.</p>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -563,15 +136,9 @@ footer{
 <section id="servicos">
     <h2>Nossas Soluções</h2>
     <div class="grid-servicos">
-        <div class="card-servico">
-            <h3>Planos Individuais</h3>
-        </div>
-        <div class="card-servico">
-            <h3>Planos Corporativos</h3>
-        </div>
-        <div class="card-servico">
-            <h3>Planos por Adesão</h3>
-        </div>
+        <div class="card-servico"><h3>Planos Individuais</h3></div>
+        <div class="card-servico"><h3>Planos Corporativos</h3></div>
+        <div class="card-servico"><h3>Planos por Adesão</h3></div>
     </div>
 </section>
 
@@ -581,22 +148,10 @@ footer{
         <img id="modalLogo" class="modal-logo">
         <h2 id="modalTitulo" class="modal-title"></h2>
         <div class="modal-info">
-            <div class="info-box">
-                <strong>Tipo:</strong>
-                <span id="modalTipo"></span>
-            </div>
-            <div class="info-box">
-                <strong>Cobertura:</strong>
-                Nacional e Regional
-            </div>
-            <div class="info-box">
-                <strong>Atendimento:</strong>
-                Planos Individuais e Empresariais
-            </div>
-            <div class="info-box">
-                <strong>Consultoria:</strong>
-                Atendimento especializado com Luciana Vicente
-            </div>
+            <div class="info-box"><strong>Tipo:</strong> <span id="modalTipo"></span></div>
+            <div class="info-box"><strong>Cobertura:</strong> Nacional e Regional</div>
+            <div class="info-box"><strong>Atendimento:</strong> Planos Individuais e Empresariais</div>
+            <div class="info-box"><strong>Consultoria:</strong> Atendimento especializado com Luciana Vicente</div>
         </div>
     </div>
 </div>
@@ -604,7 +159,7 @@ footer{
 <section id="contato">
     <h2>Localização</h2>
     <div class="mapa-container">
-        <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.341490234038!2d-43.11667012476579!3d-22.926202479234856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9980d243292403%3A0x6b4034870f7d5c58!2sR.%20Mariz%20e%20Barros%2C%20147%20-%20Icara%C3%AD%2C%20Niter%C3%B3i%20-%20RJ%2C%2024220-120!5e0!3m2!1spt-BR!2sbr"></iframe>
+        <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Rio%20de%20Janeiro&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
     </div>
 </section>
 
@@ -613,27 +168,14 @@ footer{
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 <script>
 const dominios_operadoras = {
-    "ampla saude":"amplasaude.com.br",
-    "sao cristovao":"saocristovao.com.br",
-    "sami":"samisaude.com.br",
-    "alice":"alice.com.br",
-    "amil":"amil.com.br",
-    "hapvida":"hapvida.com.br",
-    "bradesco":"bradescoseguros.com.br",
-    "sulamerica":"sulamerica.com.br",
-    "unimed":"unimed.coop.br",
-    "assim saude":"assim.com.br",
-    "porto seguro":"portoseguro.com.br",
-    "omint":"omint.com.br",
-    "samel":"samel.com.br",
-    "prevent senior":"preventsenior.com.br",
-    "medsenior":"medsenior.com.br",
-    "doctorclin":"doctorclin.com.br"
+    "ampla saude":"amplasaude.com.br", "sao cristovao":"saocristovao.com.br", "sami":"samisaude.com.br",
+    "alice":"alice.com.br", "amil":"amil.com.br", "hapvida":"hapvida.com.br", "bradesco":"bradescoseguros.com.br",
+    "sulamerica":"sulamerica.com.br", "unimed":"unimed.coop.br", "assim saude":"assim.com.br",
+    "porto seguro":"portoseguro.com.br", "omint":"omint.com.br", "samel":"samel.com.br",
+    "prevent senior":"preventsenior.com.br", "medsenior":"medsenior.com.br", "doctorclin":"doctorclin.com.br"
 };
 
 async function carregarParceiros(){
@@ -645,7 +187,7 @@ async function carregarParceiros(){
 
         operadoras.forEach(nome => {
             const chave = nome.toLowerCase().trim();
-            const dominio = dominios_operadoras[chave];
+            const dominio = dominios_operadoras[chave] || "google.com";
 
             const slide = document.createElement('div');
             slide.className = 'slide-item';
@@ -655,10 +197,7 @@ async function carregarParceiros(){
 
             const img = document.createElement('img');
             img.src = `https://www.google.com/s2/favicons?domain=${dominio}&sz=256`;
-
-            img.onerror = function(){
-                this.src = 'https://cdn-icons-png.flaticon.com/512/2966/2966486.png';
-            };
+            img.onerror = function(){ this.src = 'https://cdn-icons-png.flaticon.com/512/2966/2966486.png'; };
 
             const span = document.createElement('span');
             span.textContent = nome;
@@ -668,65 +207,31 @@ async function carregarParceiros(){
             slide.appendChild(card);
             container.appendChild(slide);
 
-            /* EVENTO CLICK PARA O MODAL */
             card.addEventListener('click', () => abrirModal(nome, img.src));
         });
 
-        // Inicialização do Slick Slider (Sem pontinhos de paginação)
         $('#container-logos').slick({
-            slidesToShow:5,
-            slidesToScroll:1,
-            autoplay:true,
-            autoplaySpeed:1800,
-            infinite:true,
-            arrows:true,
-            dots:false, // ALTERAÇÃO: Removido os pontinhos de paginação
-            variableWidth:false, // Otimização para forçar larguras consistentes no layout
-            pauseOnHover:true,
+            slidesToShow:5, slidesToScroll:1, autoplay:true, autoplaySpeed:1800,
+            infinite:true, arrows:true, dots:false, variableWidth:false, pauseOnHover:true,
             responsive:[
-                {
-                    breakpoint:1024,
-                    settings:{ slidesToShow:4 }
-                },
-                {
-                    breakpoint:768,
-                    settings:{ slidesToShow:2 }
-                },
-                {
-                    breakpoint:480,
-                    settings:{ slidesToShow:1 }
-                }
+                { breakpoint:1024, settings:{ slidesToShow:4 } },
+                { breakpoint:768, settings:{ slidesToShow:2 } },
+                { breakpoint:480, settings:{ slidesToShow:1 } }
             ]
         });
-
-    }catch(error){
-        console.error('Erro ao carregar parceiros:', error);
-    }
+    }catch(error){ console.error('Erro ao carregar parceiros:', error); }
 }
 
-/* FUNÇÕES DO MODAL */
 function abrirModal(nome,logo){
     document.getElementById('modalTitulo').innerText = nome;
     document.getElementById('modalLogo').src = logo;
     document.getElementById('modalTipo').innerText = 'Plano de Saúde';
     document.getElementById('modalParceiro').style.display = 'flex';
 }
-
 document.getElementById('fecharModal').addEventListener('click', fecharModal);
-
-function fecharModal(){
-    document.getElementById('modalParceiro').style.display = 'none';
-}
-
-window.addEventListener('click', function(e){
-    const modal = document.getElementById('modalParceiro');
-    if(e.target === modal){
-        fecharModal();
-    }
-});
-
+function fecharModal(){ document.getElementById('modalParceiro').style.display = 'none'; }
+window.addEventListener('click', function(e){ if(e.target === document.getElementById('modalParceiro')){ fecharModal(); } });
 document.addEventListener('DOMContentLoaded', carregarParceiros);
 </script>
-
 </body>
 </html>
