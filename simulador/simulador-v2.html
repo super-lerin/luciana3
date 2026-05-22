@@ -13,22 +13,26 @@
             --bg: #0a4a2e;
             --ring: #dfe6ee;
         }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body { 
             font-family: 'Inter', system-ui, sans-serif; 
             background: var(--bg); 
             color: #0f172a; 
-            margin: 0; 
-            padding: 20px; 
+            min-height: 100vh;
             display: flex; 
             justify-content: center; 
-            min-height: 100vh;
             align-items: center;
+            padding: 20px; 
         }
         .container { 
-            max-width: 700px; 
+            max-width: 750px; 
             width: 100%; 
             background: white; 
-            padding: 30px; 
+            padding: 35px; 
             border-radius: 20px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); 
             position: relative;
@@ -36,8 +40,20 @@
         }
         
         /* Headers & Texts */
-        h2 { color: var(--primary); margin-top: 0; font-size: 24px; border-bottom: 2px solid #f0fdf4; padding-bottom: 10px;}
-        .subtitle { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+        h2 { 
+            color: var(--primary); 
+            margin-top: 0; 
+            font-size: 26px; 
+            border-bottom: 2px solid #f0fdf4; 
+            padding-bottom: 10px;
+        }
+        .subtitle { 
+            font-size: 15px; 
+            color: #475569; 
+            margin-bottom: 20px; 
+            line-height: 1.4; 
+            margin-top: 10px;
+        }
         
         /* Steps Animation */
         .step { display: none; }
@@ -45,30 +61,88 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Form Elements */
-        label { display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px; }
-        select, input[type="text"], input[type="tel"], input[type="email"], input[type="number"] { 
-            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #d6dee8; 
-            background: #f8fafc; color: #0f172a; font-size: 15px; outline: none; transition: 0.2s; box-sizing: border-box;
+        label { display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+        input[type="text"], input[type="tel"], input[type="email"], input[type="number"] { 
+            width: 100%; padding: 14px; border-radius: 10px; border: 2px solid #cbd5e1; 
+            background: #f8fafc; color: #0f172a; font-size: 16px; outline: none; transition: 0.2s; box-sizing: border-box;
         }
-        select:focus, input:focus { border-color: #90c2aa; box-shadow: 0 0 0 3px rgba(25,146,85,.15); }
+        input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(255,135,42,.2); }
+        
+        /* SELETOR DE OPERADORAS AMIGÁVEL */
+        .grid-operadoras {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+            max-height: 380px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f1f5f9;
+        }
+
+        .card-operadora {
+            background: #fff;
+            border: 3px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            user-select: none;
+        }
+
+        .card-operadora:hover {
+            transform: translateY(-2px);
+            border-color: #94a3b8;
+        }
+
+        .card-operadora.selected {
+            border-color: var(--accent);
+            background: #fff7ed;
+            box-shadow: 0 0 0 4px rgba(255,135,42,.2);
+        }
+
+        .card-operadora img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .card-operadora span {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            text-transform: uppercase;
+        }
         
         /* Grids */
         .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         .age-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 20px; }
+        
         @media (max-width: 600px) {
             .grid2, .grid3 { grid-template-columns: 1fr; }
             .age-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid-operadoras { grid-template-columns: repeat(2, 1fr); }
+            .container { padding: 20px; }
         }
 
         /* Radio Choices */
         .inline-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .choice { 
-            display: flex; align-items: center; gap: 10px; padding: 12px; 
-            border: 1px solid #d6dee8; border-radius: 10px; background: #f8fafc; 
-            cursor: pointer; user-select: none; font-size: 14px; font-weight: 500;
+            display: flex; align-items: center; gap: 12px; padding: 14px; 
+            border: 2px solid #cbd5e1; border-radius: 10px; background: #f8fafc; 
+            cursor: pointer; user-select: none; font-size: 16px; font-weight: 600;
         }
-        .choice input { margin: 0; accent-color: var(--primary); transform: scale(1.2); }
+        .choice input { margin: 0; accent-color: var(--primary); transform: scale(1.4); }
+        .choice:hover { border-color: #94a3b8; }
 
         /* CNPJ Wrap */
         #cnpjWrap { opacity: 0.35; pointer-events: none; transition: 0.3s; margin-top: 10px;}
@@ -76,15 +150,15 @@
 
         /* Botões */
         .actions { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 1px solid #eef2f6; padding-top: 20px;}
-        .btn { padding: 14px 24px; border-radius: 12px; font-weight: 800; cursor: pointer; border: none; font-size: 15px; transition: 0.2s; }
-        .btn-back { background: #f2f7fb; color: #475569; border: 1px solid #d6dee8; }
+        .btn { padding: 16px 28px; border-radius: 12px; font-weight: 800; cursor: pointer; border: none; font-size: 16px; transition: 0.2s; }
+        .btn-back { background: #f1f5f9; color: #475569; border: 2px solid #cbd5e1; }
         .btn-back:hover { background: #e2e8f0; }
         .btn-primary { background: linear-gradient(180deg, #ff872a, #ff6a00); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(255, 106, 0, 0.4); }
 
         /* Loader & Status */
-        #statusBox { text-align: center; font-weight: bold; color: var(--primary); margin-top: 15px; font-size: 14px; display: none; }
-        .hint { font-size: 11px; color: #64748b; margin-top: 4px; }
+        #statusBox { text-align: center; font-weight: bold; color: var(--primary); margin-top: 15px; font-size: 16px; display: none; }
+        .hint { font-size: 13px; color: #475569; margin-top: 6px; }
     </style>
 </head>
 <body>
@@ -93,12 +167,11 @@
     
     <div id="step1" class="step active">
         <h2>Selecione o Plano</h2>
-        <p class="subtitle">Escolha a operadora desejada para iniciar sua cotação.</p>
+        <p class="subtitle">Toque na empresa ou logotipo que você deseja cotar abaixo:</p>
         
-        <label for="select-operadora">Operadora</label>
-        <select id="select-operadora">
-            <option value="">Carregando opções da tabela...</option>
-        </select>
+        <input type="hidden" id="select-operadora" value="">
+
+        <div class="grid-operadoras" id="lista-operadoras-visual"></div>
 
         <div class="actions" style="justify-content: flex-end;">
             <button class="btn btn-primary" onclick="avancarParaFormulario()">Continuar Cotação ➔</button>
@@ -127,14 +200,14 @@
             </div>
 
             <div style="margin-top: 25px;">
-                <label style="font-size: 15px; color: var(--primary);">Vidas por faixa etária</label>
-                <div class="hint" style="margin-bottom: 12px;">Preencha apenas onde houver vidas. <b>Obrigatório informar pelo menos 1 vida.</b></div>
+                <label style="font-size: 16px; color: var(--primary);">Quantas pessoas vão entrar no plano por idade?</label>
+                <div class="hint" style="margin-bottom: 12px;">Coloque o número de pessoas em cada idade. <b>Pelo menos 1 pessoa no total.</b></div>
                 <div id="idades-inputs" class="age-grid"></div>
             </div>
 
             <div class="grid2" style="margin-top: 25px;">
                 <div>
-                    <label>Possui CNPJ?</label>
+                    <label>Possui CNPJ (Empresa)?</label>
                     <div class="inline-choices">
                         <label class="choice"><input type="radio" name="tem_cnpj" value="nao" checked> <span>Não</span></label>
                         <label class="choice"><input type="radio" name="tem_cnpj" value="sim"> <span>Sim</span></label>
@@ -166,32 +239,68 @@
 </div>
 
 <script>
-    // Configurações Base
-    const numeroCorretor = "5521967744616"; // <--- NOVO NÚMERO ATUALIZADO AQUI
+    const numeroCorretor = "5521967744616";
     let dadosTabelas = {};
     const faixas = ["0-18", "19-23", "24-28", "29-33", "34-38", "39-43", "44-48", "49-53", "54-58", "59+"];
 
-    // Carregar JSON Dinamicamente (Apenas para popular o select de operadoras)
-    fetch('tabela_precos_saude.json')
-        .then(res => res.json())
-        .then(json => {
-            dadosTabelas = json.tabelas;
-            popularSelect();
-            gerarCamposIdade();
-        })
-        .catch(err => console.error("Erro ao carregar JSON das tabelas:", err));
+    const dominios_operadoras = {
+        "ampla saude":"amplasaude.com.br",
+        "sao cristovao":"saocristovao.com.br",
+        "sami":"samisaude.com.br",
+        "alice":"alice.com.br",
+        "amil":"amil.com.br",
+        "hapvida":"hapvida.com.br",
+        "bradesco":"bradescoseguros.com.br",
+        "sulamerica":"sulamerica.com.br",
+        "unimed":"unimed.coop.br",
+        "assim saude":"assim.com.br",
+        "porto seguro":"portoseguro.com.br",
+        "omint":"omint.com.br",
+        "samel":"samel.com.br",
+        "prevent senior":"preventsenior.com.br",
+        "medsenior":"medsenior.com.br",
+        "doctorclin":"doctorclin.com.br"
+    };
 
-    function popularSelect() {
-        const select = document.getElementById('select-operadora');
-        select.innerHTML = '<option value="">Selecione uma operadora...</option>';
+    function gerarCardsOperadoras() {
+        const containerVisual = document.getElementById('lista-operadoras-visual');
+        if (!containerVisual) return;
+        containerVisual.innerHTML = ''; 
+
         Object.keys(dadosTabelas).forEach(op => {
             const nomeFormatado = op.replace(/\b\w/g, l => l.toUpperCase());
-            select.add(new Option(nomeFormatado, op));
+            const chave = op.toLowerCase().trim();
+            const dominio = dominios_operadoras[chave];
+
+            const card = document.createElement('div');
+            card.className = 'card-operadora';
+            card.setAttribute('data-value', op);
+
+            const img = document.createElement('img');
+            img.src = `https://www.google.com/s2/favicons?domain=${dominio}&sz=256`;
+            img.onerror = function(){
+                this.src = 'https://cdn-icons-png.flaticon.com/512/2966/2966486.png';
+            };
+
+            const span = document.createElement('span');
+            span.textContent = nomeFormatado;
+
+            card.appendChild(img);
+            card.appendChild(span);
+            containerVisual.appendChild(card);
+
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.card-operadora').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('select-operadora').value = op;
+            });
         });
     }
 
     function gerarCamposIdade() {
         const container = document.getElementById('idades-inputs');
+        if (!container) return;
+        container.innerHTML = '';
         faixas.forEach(f => {
             container.innerHTML += `
                 <div>
@@ -201,7 +310,25 @@
         });
     }
 
-    // Controle de Telas
+    document.addEventListener("DOMContentLoaded", function() {
+        gerarCamposIdade();
+        
+        fetch('tabela_precos_saude.json', { cache: 'no-cache' })
+            .then(res => res.json())
+            .then(json => {
+                dadosTabelas = json.tabelas;
+                gerarCardsOperadoras();
+            })
+            .catch(err => {
+                console.error("Erro ao carregar JSON das tabelas:", err);
+                // Alerta amigável caso o arquivo JSON falte na pasta local do Apache
+                const containerVisual = document.getElementById('lista-operadoras-visual');
+                if(containerVisual) {
+                    containerVisual.innerHTML = `<p style="color:red; padding:20px; grid-column: 1/-1;">Aviso: O arquivo 'tabela_precos_saude.json' não foi encontrado na mesma pasta do simulador.</p>`;
+                }
+            });
+    });
+
     function changeStep(n) {
         document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
         document.getElementById('step' + n).classList.add('active');
@@ -209,12 +336,11 @@
 
     function avancarParaFormulario() {
         if (!document.getElementById('select-operadora').value) {
-            return alert("Por favor, selecione uma operadora primeiro.");
+            return alert("Por favor, toque em uma das operadoras acima para escolher o plano.");
         }
         changeStep(2);
     }
 
-    // Lógica do CNPJ (Ocultar/Mostrar)
     document.querySelectorAll('input[name="tem_cnpj"]').forEach(radio => {
         radio.addEventListener('change', (e) => {
             const wrap = document.getElementById('cnpjWrap');
@@ -223,6 +349,7 @@
                 wrap.classList.add('active');
                 input.disabled = false;
                 input.required = true;
+                input.focus();
             } else {
                 wrap.classList.remove('active');
                 input.disabled = true;
@@ -232,7 +359,6 @@
         });
     });
 
-    // Formatação automática do WhatsApp
     const inputWhats = document.getElementById('whatsapp');
     inputWhats.addEventListener('input', () => { inputWhats.value = inputWhats.value.replace(/\D/g, ''); });
     inputWhats.addEventListener('blur', () => {
@@ -240,11 +366,9 @@
         if(val && !val.startsWith('55')) { inputWhats.value = '55' + val; }
     });
 
-    // Submissão do Formulário Direto pro WhatsApp
     document.getElementById('formCotacao').addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Extrai Idades e Valida Mínimo de 1 Vida
         const inputsIdades = document.querySelectorAll('.qtd-idade');
         let totalVidas = 0;
         let resumoIdadesTexto = "";
@@ -262,11 +386,9 @@
             return alert("Para gerar a cotação, informe pelo menos 1 pessoa em alguma faixa etária.");
         }
 
-        // Garante formatação final do WhatsApp
         let whatsVal = inputWhats.value;
         if(whatsVal && !whatsVal.startsWith('55')) { whatsVal = '55' + whatsVal; }
 
-        // Variáveis do Form
         const opSelecionada = document.getElementById('select-operadora').value.toUpperCase();
         const nomeCliente = document.getElementById('nome').value.trim();
         const emailCliente = document.getElementById('email').value.trim();
@@ -274,14 +396,12 @@
         const numCnpj = document.getElementById('cnpj').value.trim();
         const temPlanoAtual = document.querySelector('input[name="tem_plano"]:checked').value === 'sim';
 
-        // UI Feedback imediato
         const btn = document.getElementById('btnGerar');
         const statusBox = document.getElementById('statusBox');
         btn.disabled = true;
         btn.style.opacity = '0.5';
         statusBox.style.display = 'block';
 
-        // Monta a Mensagem para o WhatsApp
         const msgTexto = `Olá! Gostaria de uma cotação para o plano *${opSelecionada}*.\n\n` +
                          `*Meus Contatos:*\n` +
                          `👤 Nome: ${nomeCliente}\n` +
@@ -293,10 +413,9 @@
                          `*Composição Familiar (${totalVidas} vidas no total):*\n` +
                          `${resumoIdadesTexto}\n` +
                          `Aguardo o envio da tabela de preços!`;
-                         
+                                                 
         const linkWhats = `https://wa.me/${numeroCorretor}?text=${encodeURIComponent(msgTexto)}`;
 
-        // Abre o WhatsApp instantaneamente e dá um pequeno delay apenas visual no botão
         window.open(linkWhats, "_blank");
         
         setTimeout(() => {
@@ -306,6 +425,5 @@
         }, 1500);
     });
 </script>
-
 </body>
 </html>
